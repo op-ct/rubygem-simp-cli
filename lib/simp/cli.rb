@@ -42,6 +42,7 @@ class Simp::Cli
     Simp::Cli::Commands::constants.each{ |constant|
       obj = Simp::Cli::Commands.const_get(constant)
       if obj.respond_to?(:superclass) and obj.superclass == Simp::Cli::Commands::Command
+        puts "loading command '#{constant}'" if args.include?('--debug')
         @commands[constant.to_s.downcase] = obj.new
       end
     }
@@ -93,7 +94,7 @@ class Simp::Cli
         if e.inspect == 'Interrupt'
           $stderr.puts "\nProcessing interrupted! Exiting.\n\n".red
         else
-          $stderr.puts "\nProcess received signal #{e.message}. Exiting!\n\n".red
+          $stderr.puts "\nProcess received signal #{e.signo}: #{e.message}. Exiting!\n\n".red
           e.backtrace.first(10).each{|l| $stderr.puts l }
         end
         result = 1
