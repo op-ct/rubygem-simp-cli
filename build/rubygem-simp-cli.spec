@@ -2,7 +2,7 @@
 
 %global gemdir /usr/share/simp/ruby
 %global geminstdir %{gemdir}/gems/%{gemname}-%{version}
-%global cli_version 4.3.0
+%global cli_version 4.4.0
 %global highline_version 1.7.8
 
 # gem2ruby's method of installing gems into mocked build roots will blow up
@@ -101,6 +101,15 @@ EOM
 %doc %{gemdir}/doc
 
 %changelog
+* Mon Mar 11 2019 Chris Tessmer <chris.tessmer@onyxpoint.com> - 4.4.0
+- Added `simp puppetfile generate` command
+  - `simp puppetfile` command
+  - `simp puppetfile generate` sub-command
+- Fixed various annoyances that prevented local smoke tests with `bin/simp`
+  - Avoid using AIO Puppet with `USE_AIO_PUPPET=no`
+  - Load all `simp` commands without `simp config` failing in non-puppetserver
+    environments (`simp config` still fails as expected)
+
 * Tue Oct 09 2018 Chris Tessmer <chris.tessmer@onyxpoint.com> - 4.3.0
 - Fixed `simp bootstrap` errors in puppetserver 5+:
   - No longer overwrites `web-routes.conf` (fixes fatal configuration error)
