@@ -22,12 +22,10 @@ based on a pre-defined SIMP scenario.  These preparations include optional
 and required general system setup and required Puppet configuration. All changes
 will be logged to
 EOM
+  CONFIG_SETTINGS_FILE = 'simp_config_settings.yaml'
 
   def initialize
-
     @default_answers_outfile = File.join(Simp::Cli::SIMP_CLI_HOME, 'simp_conf.yaml')
-    @default_hiera_outfile   = File.join(Simp::Cli::Utils::simp_env_datadir,
-     'simp_config_settings.yaml')
 
     @options =  {
       :verbose                => 0, # <0 = ERROR and above
@@ -39,7 +37,6 @@ EOM
 
       :answers_input_file     => nil,
       :answers_output_file    => File.expand_path( @default_answers_outfile ),
-      :puppet_system_file     => File.expand_path( @default_hiera_outfile ),
 
       :use_safety_save        => true,
       :autoaccept_safety_save => false
@@ -111,6 +108,11 @@ EOM
   end
 
   def parse_command_line(args)
+    @default_hiera_outfile = File.join(
+                               Simp::Cli::Utils::simp_env_datadir,
+                               CONFIG_SETTINGS_FILE
+                             )
+    @options[:puppet_system_file] = File.expand_path( @default_hiera_outfile )
 
     @opt_parser      = OptionParser.new do |opts|
       opts_separator = ' '*4 + '-'*76
