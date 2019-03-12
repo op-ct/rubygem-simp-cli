@@ -7,13 +7,13 @@ require 'simp/cli/commands/command'
 require 'simp/cli/config/errors'
 require 'simp/cli/config/items'
 require 'simp/cli/config/item_list_factory'
-require 'simp/cli/config/logging'
+require 'simp/cli/logging'
 require 'simp/cli/config/questionnaire'
 
 # Handle CLI interactions for "simp config"
 class Simp::Cli::Commands::Config  < Simp::Cli::Commands::Command
 
-  include Simp::Cli::Config::Logging
+  include Simp::Cli::Logging
 
   INTRO_TEXT = <<EOM
 #{'='*80}
