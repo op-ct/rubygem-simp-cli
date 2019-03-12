@@ -109,6 +109,7 @@ EOM
   - Avoid using AIO Puppet with `USE_AIO_PUPPET=no`
   - Load all `simp` commands without `simp config` failing in non-puppetserver
     environments (`simp config` still fails as expected)
+- Moved logger to `Simp::Cli::Logging`
 
 * Tue Oct 09 2018 Chris Tessmer <chris.tessmer@onyxpoint.com> - 4.3.0
 - Fixed `simp bootstrap` errors in puppetserver 5+:
