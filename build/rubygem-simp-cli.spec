@@ -126,6 +126,11 @@ EOM
 %doc %{gemdir}/doc
 
 %changelog
+* Fri Apr 26 2019 Chris Tessmer <chris.tessmer@onyxpoint.com> - 4.5.0
+- Added `simp environment` command
+  - `simp environment new` command
+  - `simp environment fix` command
+
 * Tue Apr 16 2019 Liz Nemsick <lnemsick.simp@gmail.com> - 4.5.0
 - 'simp config' updates:
   - Reworked questionnaire to allow the user to opt out
