@@ -42,5 +42,9 @@ module Simp::Cli::Environment
     def fix
       fail NotImplementedError, "Implement .#{__method__} in a subclass"
     end
+
+    def fail_unless_createable
+      fail NotImplementedError, "Implement .#{__method__} in a subclass"
+    end
   end
 end
