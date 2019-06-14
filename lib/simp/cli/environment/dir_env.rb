@@ -30,7 +30,7 @@ module Simp::Cli::Environment
           system("restorecon -R -F -p #{path} 2>&1")
         end
       else
-        say("SELinux is disabled; skipping context fixfiles for '#{path}'".yellow)
+        say("SELinux is disabled; skipping context fixfiles for '#{paths}'".yellow)
       end
     end
 
