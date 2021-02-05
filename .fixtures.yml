@@ -8,7 +8,7 @@ fixtures:
     # - Older version of simplib will be cloned in the test, as fixtures code
     #   can only handle one version per URL
     simplib: https://github.com/simp/pupmod-simp-simplib
-    stdlib: https://github.com/simp/puppetlabs-stdlib
+    stdlib: https://github.com/simp/puppetlabs-stdlib #
 
     # To set ClientAlive* settings for sshd_config
     augeasproviders_core: https://github.com/simp/augeasproviders_core
