@@ -76,6 +76,7 @@ jobs:
     name: 'RSpec'
     runs-on: ubuntu-18.04
     strategy:
+      fail-fast: false
       matrix:
         puppet:
           - label: 'Puppet 6.18 [SIMP 6.5/PE 2019.8]'
@@ -89,7 +90,6 @@ jobs:
             ruby_version: '2.7'
     env:
       PUPPET_VERSION: '${{matrix.puppet.puppet_version}}'
-    fail-fast: false
     steps:
       - uses: actions/checkout@v2
       - name: 'Install Ruby ${{matrix.puppet.ruby_version}}'
