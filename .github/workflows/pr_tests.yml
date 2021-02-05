@@ -100,14 +100,14 @@ jobs:
           bundler-cache: true
         # simp cli code uses libpwquality or cracklib to validate passwords and
         # rsync in simp environment commands
-      - run: 'if command -v apt-get; then apt-get update; apt-get install -y rpm cracklib-runtime libicu-dev rsync; fi ||:'
+      - run: |
+          apt-get update
+          apt-get install -y rpm cracklib-runtime libicu-dev rsync'
         # simp cli code fetches USER env variable.  In the docker container USER is
         # not available, but the process is running as root.
-      - run: 'bundle exec rake spec'
+      - run: 'USER=root SIMP_SKIP_NON_SIMPOS_TESTS=1 bundle exec rake spec'
         env:
           SKIP_COVERAGE: yes
-          USER: root
-          SIMP_SKIP_NON_SIMPOS_TESTS: 1
 
 #  dump_contexts:
 #    name: 'Examine Context contents'
