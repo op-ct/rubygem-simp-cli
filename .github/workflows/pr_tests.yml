@@ -59,8 +59,7 @@ jobs:
           ruby-version: 2.5
           bundler-cache: true
       - name: 'Ensure executables are installed'
-        run: |
-          command -v rpm || if command -v apt-get; then apt-get update; apt-get install -y rpm; fi ||:
+          command -v rpm || if command -v apt-get; then sudo apt-get update; sudo apt-get install -y rpm; fi ||:
           command -v rpm || { >&2 echo "FATAL: Cannot find executable: ''rpm''";  exit 1 ;}
       - name: 'Tags and changelogs'
         run: |
@@ -101,8 +100,8 @@ jobs:
         # simp cli code uses libpwquality or cracklib to validate passwords and
         # rsync in simp environment commands
       - run: |
-          apt-get update
-          apt-get install -y rpm cracklib-runtime libicu-dev rsync'
+          sudo apt-get update
+          sudo apt-get install -y rpm cracklib-runtime libicu-dev rsync'
         # simp cli code fetches USER env variable.  In the docker container USER is
         # not available, but the process is running as root.
       - run: 'USER=root SIMP_SKIP_NON_SIMPOS_TESTS=1 bundle exec rake spec'
